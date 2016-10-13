@@ -231,6 +231,13 @@ def save_pages(css_links):
                 for script in soup.find_all('script'):
                     decomp.append(script)
 
+                # Get recipe image and save it.
+                image = soup.find('img', itemprop='image')
+                if image != None:
+                    main_div = soup.find('div', class_='recipe-main-info')
+                    main_div.insert_after(image)
+
+
                 for ele in decomp:
                     if ele:
                         ele.decompose()

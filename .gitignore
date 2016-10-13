@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Directories and files created after running scrapper
+BBC_Food_Repo
+bbc_sitemap.txt
+temp_data.txt
