@@ -14,8 +14,32 @@
 # -------------------------------------------------------------------------------
 
 
-import bs4, os, requests, time
+import bs4, os, requests, time, getopt, sys
 
+usage_msg = """
+Usage: python3 OPTS
+and OPTS can be following:
+	--help			Show help message
+	--with-images		Scrape recipes including images (if available).
+"""
+
+with_images = False
+
+def parse_command_line():
+    try:
+        opts = getopt.getopt(sys.argv[1:], '',
+                                   ['help','with-images'])
+    except getopt.GetoptError as e:
+        err('{0}'.format(str(e)))
+
+    for opt in opts:
+        if opt[0][0] == '--help':
+            print(usage_msg)
+            sys.exit(0)
+        elif opt == '--with-images':
+            global with_images
+            with_images = True
+            print('Recipes will be scraped with images.')
 
 def remove_temp_data():
     '''
@@ -232,11 +256,12 @@ def save_pages(css_links):
                     decomp.append(script)
 
                 # Get recipe image and save it.
-                image = soup.find('img', itemprop='image')
-                if image != None:
-                    print(filepath)
-                    main_div = soup.find('div', class_='recipe-title--small-spacing')
-                    main_div.insert_after(image)
+                if with_images:
+                    image = soup.find('img', itemprop='image')
+                    if image != None:
+                        print(filepath)
+                        main_div = soup.find('div', class_='recipe-title--small-spacing')
+                        main_div.insert_after(image)
 
 
                 for ele in decomp:
@@ -260,6 +285,9 @@ def save_pages(css_links):
 
 
 def main():
+
+    parse_command_line()
+
     get_sitemap()
 
     make_repodir()
