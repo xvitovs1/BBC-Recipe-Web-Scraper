@@ -282,6 +282,7 @@ def save_pages(css_links):
 
                 with open(filepath, 'w', encoding='utf-8-sig') as html_page:
                     html_page.write(html)
+                    print(filepath)
 
 
 def main():
