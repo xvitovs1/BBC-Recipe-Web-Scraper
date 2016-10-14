@@ -14,7 +14,7 @@ I ran this overnight on my laptop and it took about 5 ½ hours. Total size is 10
 
 ## Instructions
 
-1. Install the dependencies:
+1. Install the dependencies (python 3 is required):
 
 ```python
 pip install beautifulsoup4
@@ -27,4 +27,8 @@ pip install requests
 git clone https://github.com/Thomas-Rudge/BBC-Recipe-Web-Scraper.git
 cd BBC-Recipe-Web-Scraper
 python scrape_bbc_recipes.py
+```
+If you want to scrape the recipes with images, run the script with option `--with-images`:
+```bash
+python scrape_bbc_recipes.py --with-images
 ```
