@@ -234,7 +234,8 @@ def save_pages(css_links):
                 # Get recipe image and save it.
                 image = soup.find('img', itemprop='image')
                 if image != None:
-                    main_div = soup.find('div', class_='recipe-main-info')
+                    print(filepath)
+                    main_div = soup.find('div', class_='recipe-title--small-spacing')
                     main_div.insert_after(image)
 
 
