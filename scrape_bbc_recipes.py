@@ -17,7 +17,7 @@
 import bs4, os, requests, time, getopt, sys
 
 usage_msg = """
-Usage: python3 OPTS
+Usage: python3 scrape_bbc_recipes.py OPTS
 and OPTS can be following:
 	--help			Show help message
 	--with-images		Scrape recipes including images (if available).
