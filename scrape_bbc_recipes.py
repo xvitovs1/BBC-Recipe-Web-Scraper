@@ -27,13 +27,13 @@ with_images = False
 
 def parse_command_line():
     try:
-        opts = getopt.getopt(sys.argv[1:], '',
+        opts,args = getopt.getopt(sys.argv[1:], '',
                                    ['help','with-images'])
     except getopt.GetoptError as e:
         err('{0}'.format(str(e)))
 
-    for opt in opts:
-        if opt[0][0] == '--help':
+    for opt,arg in opts:
+        if opt == '--help':
             print(usage_msg)
             sys.exit(0)
         elif opt == '--with-images':
